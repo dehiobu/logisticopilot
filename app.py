@@ -126,7 +126,19 @@ if uploaded_file:
             # Re-summarizes the manifest for inclusion in the export.
             summary = summarize_manifest(text_data, OPENAI_API_KEY)
             # 🔧 Placeholder: Defines dummy compliance notes for demonstration purposes.
-            compliance_notes = ["SHP003 missing tracking ID", "Carrier XYZ not approved"]
+            # compliance_notes = ["SHP003 missing tracking ID", "Carrier XYZ not approved"]
+            compliance_notes = []
+            if "carrier" in df.columns:
+                approved_carriers = load_approved_carriers()
+                for i, row in df.iterrows():
+                    carrier = str(row["carrier"]).strip().lower()
+                    if carrier not in approved_carriers:
+                        compliance_notes.append(f"{row.get('shipmentid', f'Row {i+2}')} uses unapproved carrier: {carrier}")
+
+            if "trackingid" in df.columns:
+                for i, row in df.iterrows():
+                    if pd.isna(row["trackingid"]) or str(row["trackingid"]).strip() == "":
+                        compliance_notes.append(f"{row.get('shipmentid', f'Row {i+2}')} missing tracking ID")
 
             # Export to Excel
             # Calls a utility function to export the DataFrame, summary, and compliance notes to an Excel file.
