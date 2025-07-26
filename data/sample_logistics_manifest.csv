@@ -1,0 +1,7 @@
+Shipment ID,Carrier,Status,Cost,Tracking Ref
+SHP001,DPD,Delivered,12.5,TR001
+SHP002,FedEx,In Transit,48.0,TR002
+SHP003,DHL,Delayed,15.75,TR003
+SHP004,XYZ Express,Cancelled,99.99,
+SHP005,DPD,Delivered,13.0,TR005
+SHP006,UPS,Delayed,20.0,TR006

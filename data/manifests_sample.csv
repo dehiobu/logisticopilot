@@ -1,0 +1,5 @@
+ShipmentID,Origin,Destination,DepartureDate,ExpectedArrival,Status,Carrier
+SHP001,London,Paris,2024-07-01,2024-07-03,Delivered,DHL
+SHP002,Birmingham,Berlin,2024-07-02,2024-07-04,In Transit,FedEx
+SHP003,Manchester,Madrid,2024-07-03,2024-07-05,Delayed,UPS
+SHP004,Leeds,Rome,2024-07-04,2024-07-06,In Transit,TNT

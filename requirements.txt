@@ -1,0 +1,15 @@
+streamlit
+langchain
+openai
+pandas
+PyPDF2
+tiktoken
+langchain-community>=0.0.20
+langchain-core>=0.1.17
+langchain>=0.1.17
+openai
+streamlit
+pandas
+PyPDF2
+tiktoken
+fpdf
