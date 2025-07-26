@@ -4,7 +4,7 @@ from config import SMTP_SERVER, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, ALERT_EMAIL
 
 def send_email_alert(subject, body, to_email):
     """
-    Sends an email using SSL (required for Zoho SMTP on port 465).
+    Sends an email using SSL (Zoho compatible), with explicit connect() call.
     """
     msg = MIMEText(body)
     msg["Subject"] = subject
@@ -12,10 +12,12 @@ def send_email_alert(subject, body, to_email):
     msg["To"] = to_email
 
     try:
-        # ✅ Zoho requires SSL (not starttls) on port 465
-        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
-            server.login(SMTP_USER, SMTP_PASSWORD)
-            server.sendmail(ALERT_EMAIL_FROM, to_email, msg.as_string())
+        # 🔧 Create SMTP_SSL object and explicitly connect
+        server = smtplib.SMTP_SSL()
+        server.connect(SMTP_SERVER, SMTP_PORT)
+        server.login(SMTP_USER, SMTP_PASSWORD)
+        server.sendmail(ALERT_EMAIL_FROM, to_email, msg.as_string())
+        server.quit()
 
         return True
     except Exception as e:
