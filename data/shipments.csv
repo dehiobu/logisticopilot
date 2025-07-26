@@ -1,0 +1,7 @@
+shipment_id,status,eta,action
+SH001,In Transit,2025-07-29,No action needed
+SH002,Delayed due to customs,2025-07-30,Awaiting customs clearance
+SH003,Delivered,2025-07-25,Delivered successfully
+SH004,Delayed due to weather,2025-08-01,Carrier rerouting shipment
+SH005,In Transit,2025-07-31,Check carrier update
+SH006,Delayed at port,2025-08-02,Waiting for dock availability
