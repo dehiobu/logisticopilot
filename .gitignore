@@ -1,0 +1,21 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs and output
+*.log
+*.out
+
+# Excel reports
+*.xlsx
+
+# Environment and IDE
+.env
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Streamlit specific
+.streamlit/secrets.toml
