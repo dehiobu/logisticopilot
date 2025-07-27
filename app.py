@@ -7,6 +7,12 @@
 # --- Imports ---
 import streamlit as st # Streamlit library for creating interactive web applications.
 import pandas as pd # Pandas library for data manipulation and analysis, especially DataFrames.
+import os
+st.markdown("### 🧪 Debug Info")
+st.write("📂 Current working directory:", os.getcwd())
+st.write("📁 Files in this directory:", os.listdir())
+st.write("📁 Contents of 'utils' folder:", os.listdir("utils") if os.path.isdir("utils") else "utils folder not found")
+
 from langchain.docstore.document import Document # Document class from LangChain, used to represent text content for LLM processing.
 
 # --- Custom modules from your project ---
@@ -19,6 +25,12 @@ from utils.pdf_utils import generate_pdf # Imports a utility to generate PDF rep
 from utils.email_utils import send_email_alert # Imports a utility to send email alerts.
 from utils.excel_utils import export_manifest_to_excel # Imports a utility to export data to Excel.
 from tabs.shipment_alert_tab import shipment_alert_tab  # ✅ NEW: Imports the function that defines the content and logic for the "Shipment Alerts" tab.
+
+
+st.markdown("### 🧪 Debug Info")
+st.write("📂 Current working directory:", os.getcwd())
+st.write("📁 Files in this directory:", os.listdir())
+st.write("📁 Contents of 'utils' folder:", os.listdir("utils") if os.path.isdir("utils") else "utils folder not found")
 
 # --- Streamlit Page Configuration ---
 # Sets global configurations for the Streamlit page.
