@@ -1,7 +1,8 @@
 import streamlit as st
 import csv
 from jinja2 import Template
-from app.utils.email_sender import send_email
+# from ..utils.email_sender import send_email #tabs/ and utils/ are sibling folder, and stops circular import or grand father paradox
+from utils.email_utils import send_email_alert
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import OpenAI  # Replace or mock if not using OpenAI
 
