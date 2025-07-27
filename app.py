@@ -1,4 +1,4 @@
-```python
+python
 # ===============================
 # 📦 LogiBot AI Copilot – Main App
 # ===============================
@@ -172,5 +172,3 @@ if uploaded_file:
 # This block is displayed when no file has been uploaded yet.
 else:
     st.info("📂 Please upload a manifest file to get started.") # Informational message prompting file upload.
-
-```
