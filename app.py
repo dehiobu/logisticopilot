@@ -7,12 +7,7 @@
 # --- Imports ---
 import streamlit as st # Streamlit library for creating interactive web applications.
 import pandas as pd # Pandas library for data manipulation and analysis, especially DataFrames.
-import os
-st.markdown("### 🧪 Debug Info")
-st.write("📂 Current working directory:", os.getcwd())
-st.write("📁 Files in this directory:", os.listdir())
-st.write("📁 Contents of 'utils' folder:", os.listdir("utils") if os.path.isdir("utils") else "utils folder not found")
-
+import os # Operating system module for path manipulation and file operations.
 from langchain.docstore.document import Document # Document class from LangChain, used to represent text content for LLM processing.
 
 # --- Custom modules from your project ---
@@ -25,12 +20,6 @@ from utils.pdf_utils import generate_pdf # Imports a utility to generate PDF rep
 from utils.email_utils import send_email_alert # Imports a utility to send email alerts.
 from utils.excel_utils import export_manifest_to_excel # Imports a utility to export data to Excel.
 from tabs.shipment_alert_tab import shipment_alert_tab  # ✅ NEW: Imports the function that defines the content and logic for the "Shipment Alerts" tab.
-
-
-st.markdown("### 🧪 Debug Info")
-st.write("📂 Current working directory:", os.getcwd())
-st.write("📁 Files in this directory:", os.listdir())
-st.write("📁 Contents of 'utils' folder:", os.listdir("utils") if os.path.isdir("utils") else "utils folder not found")
 
 # --- Streamlit Page Configuration ---
 # Sets global configurations for the Streamlit page.
@@ -133,12 +122,13 @@ if uploaded_file:
         with tab4: # Content for the "Export" tab.
             st.markdown("### 📤 Export Summary & Data") # Subheader for export options.
 
-            # Generate summary & dummy compliance notes
-            # Re-summarizes the manifest for inclusion in the export.
+            # Generate summary & compliance notes
             summary = summarize_manifest(text_data, OPENAI_API_KEY)
-            # 🔧 Placeholder: Defines dummy compliance notes for demonstration purposes.
-            # compliance_notes = ["SHP003 missing tracking ID", "Carrier XYZ not approved"]
-            compliance_notes = []
+            
+            # Initialize compliance notes list
+            compliance_notes = [] 
+
+            # Check for unapproved carriers if 'carrier' column exists
             if "carrier" in df.columns:
                 approved_carriers = load_approved_carriers()
                 for i, row in df.iterrows():
@@ -146,6 +136,7 @@ if uploaded_file:
                     if carrier not in approved_carriers:
                         compliance_notes.append(f"{row.get('shipmentid', f'Row {i+2}')} uses unapproved carrier: {carrier}")
 
+            # Check for missing tracking IDs if 'trackingid' column exists
             if "trackingid" in df.columns:
                 for i, row in df.iterrows():
                     if pd.isna(row["trackingid"]) or str(row["trackingid"]).strip() == "":
@@ -155,15 +146,21 @@ if uploaded_file:
             # Calls a utility function to export the DataFrame, summary, and compliance notes to an Excel file.
             excel_path = export_manifest_to_excel(df, summary, compliance_notes)
 
+            # Read the content of the generated Excel file into bytes for download
+            with open(excel_path, "rb") as f:
+                excel_bytes = f.read()
+
             # Download button
             # Provides a button for the user to download the generated Excel report.
-            with open(excel_path, "rb") as f: # Opens the generated Excel file in binary read mode.
-                st.download_button(
-                    "📥 Download Excel Report", # Label for the download button.
-                    data=f, # The file data to be downloaded.
-                    file_name=excel_path.split("/")[-1], # Sets the downloaded file name to just the file name from the path.
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" # Specifies the MIME type for Excel files.
-                )
+            st.download_button(
+                "📥 Download Excel Report", # Label for the download button.
+                data=excel_bytes, # The file content as bytes to be downloaded.
+                file_name=os.path.basename(excel_path), # Sets the downloaded file name.
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" # Specifies the MIME type for Excel files.
+            )
+            
+            # Clean up the temporary Excel file after it's been read for download
+            os.remove(excel_path)
 
         # ===============================
         # 🚨 Tab 5: Shipment Delay Alert (LangChain + Email)
