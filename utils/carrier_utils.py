@@ -1,7 +1,7 @@
 import os
 import json
 
-CARRIER_FILE = "data/approved_carriers.json"
+CARRIER_FILE = open("data/approved_carriers.json", "r")
 
 def load_approved_carriers():
     if os.path.exists(CARRIER_FILE):
