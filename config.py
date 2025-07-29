@@ -1,32 +1,13 @@
-    # config.py
-    import os
+# config.py
+import streamlit as st
 
-    # Load API Keys and other secure configs
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    # --- TEMPORARY DEBUG LINE ---
-    print(f"DEBUG_SECRET_CHECK: OPENAI_API_KEY raw value: '{OPENAI_API_KEY}' (Type: {type(OPENAI_API_KEY)})")
-    # --- END TEMPORARY DEBUG LINE ---
+# Load API Keys and SMTP config from Streamlit Secrets
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+ALERT_EMAIL_FROM = st.secrets["ALERT_EMAIL_FROM"]
+SMTP_SERVER = st.secrets["SMTP_SERVER"]
+SMTP_PORT = int(st.secrets.get("SMTP_PORT", 587))  # Default to 587 if not set
+SMTP_USER = st.secrets["SMTP_USER"]
+SMTP_PASSWORD = st.secrets["SMTP_PASSWORD"]
 
-    if not OPENAI_API_KEY:
-        raise ValueError("OPENAI_API_KEY environment variable not set. Please set it securely.")
-
-    ALERT_EMAIL_FROM = os.getenv("ALERT_EMAIL_FROM")
-    if not ALERT_EMAIL_FROM:
-        raise ValueError("ALERT_EMAIL_FROM environment variable not set.")
-
-    SMTP_SERVER = os.getenv("SMTP_SERVER")
-    if not SMTP_SERVER:
-        raise ValueError("SMTP_SERVER environment variable not set.")
-
-    SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
-    if not SMTP_PORT:
-        raise ValueError("SMTP_PORT environment variable not set or invalid.")
-
-    SMTP_USER = os.getenv("SMTP_USER")
-    if not SMTP_USER:
-        raise ValueError("SMTP_USER environment variable not set.")
-
-    SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
-    if not SMTP_PASSWORD:
-        raise ValueError("SMTP_PASSWORD environment variable not set.")
-    
+# Optional: Debug visibility
+print(f"DEBUG_SECRET_CHECK: OPENAI_API_KEY: '{OPENAI_API_KEY}'")
