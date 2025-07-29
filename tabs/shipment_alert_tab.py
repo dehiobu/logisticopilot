@@ -88,7 +88,7 @@ def shipment_alert_tab():
     st.markdown("### ✉️ LogiBot's Generated Alert:")
     st.markdown(rewritten_msg)
 
-    # Email input and send
+    # Email input and send generated documents
     recipient = st.text_input("Enter recipient email:")
     if st.button("Send Alert Email"):
         if recipient:
