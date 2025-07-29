@@ -92,7 +92,7 @@ def shipment_alert_tab():
     recipient = st.text_input("Enter recipient email:")
     if st.button("Send Alert Email"):
         if recipient:
-            send_email(
+            send_email_alerts(
                 subject="🚨 Shipment Delay Alert",
                 body=rewritten_msg,
                 to_email=recipient
