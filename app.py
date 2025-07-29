@@ -159,10 +159,6 @@ if uploaded_file:
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" # Specifies the MIME type for Excel files.
             )
             
-            # Debugging lines: Print the type and value of excel_path before removal
-            st.write(f"DEBUG: Type of excel_path before remove: {type(excel_path)}")
-            st.write(f"DEBUG: Value of excel_path before remove: {excel_path}")
-
             # Clean up the temporary Excel file after it's been read for download
             os.remove(excel_path)
 
