@@ -203,6 +203,142 @@ if not OPENAI_API_KEY:
     st.info("💡 Make sure to set your OPENAI_API_KEY in Streamlit secrets or environment variables.")
     st.stop()
 
+# ------------------------------------------------------------------------------
+# 5.5. Sample Data Section for Testing
+# ------------------------------------------------------------------------------
+
+# --- Sample Data Section ---
+st.markdown("---")
+st.markdown("### 📂 **Sample Data for Testing**")
+st.info("💡 **New to LogiBot?** Download these sample files to test all features instantly!")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown("**🚚 Basic Manifest**")
+    st.markdown("*Tests: AI Summary, Q&A, Dashboard*")
+    st.caption("*7 columns • Standard logistics format*")
+    
+    # Using your 7-column structure from sample_logistics_manifest2.csv
+    basic_data = """Shipment ID,Carrier,Status,Cost,Tracking Ref,Origin,Destination
+SHP001,DHL,Delivered,25.50,DHL123456,London,Manchester
+SHP002,FedEx,In Transit,45.20,FDX789012,Birmingham,Edinburgh
+SHP003,UPS,Delayed,32.75,UPS345678,Bristol,Glasgow
+SHP004,DPD,Delivered,18.90,DPD901234,Cardiff,Newcastle
+SHP005,Royal Mail,In Transit,12.25,RM567890,Liverpool,Leeds
+SHP006,Amazon Logistics,Delivered,28.75,AMZN345678,Nottingham,Sheffield
+SHP007,Hermes,Processing,35.60,HMS789012,Southampton,Portsmouth
+SHP008,TNT,Delayed,41.90,TNT234567,Oxford,Cambridge
+SHP009,UPS,Delivered,29.45,UPS987321,York,Hull
+SHP010,DPD,In Transit,33.80,DPD456789,Preston,Blackpool
+SHP011,FedEx,Delivered,52.30,FDX654987,Bath,Exeter
+SHP012,DHL,Processing,38.75,DHL789456,Coventry,Wolverhampton
+SHP013,Royal Mail,Delivered,15.60,RM321654,Norwich,Ipswich"""
+    
+    st.download_button(
+        "📥 Download Basic Sample",
+        data=basic_data,
+        file_name="basic_logistics_manifest.csv",
+        mime="text/csv",
+        help="13 shipments • Tests AI Summary & Q&A",
+        key="basic_download"
+    )
+
+with col2:
+    st.markdown("**🌍 Enhanced Manifest**")
+    st.markdown("*Tests: Route Optimization, Maps*")
+    st.caption("*15 columns • With coordinates & dates*")
+    
+    # Using your 15-column structure from manifest_with_coordinates
+    enhanced_data = """shipment_id,carrier,status,cost,tracking_ref,origin,destination,priority,departure_date,expected_arrival,delivery_date,Origin Lat,Origin Lon,Dest Lat,Dest Lon
+SHP001,DHL,Delivered,25.50,DHL123456,London,Manchester,High,2024-08-01,2024-08-02,2024-08-02,51.5074,-0.1278,53.4808,-2.2426
+SHP002,FedEx,In Transit,45.20,FDX789012,Birmingham,Edinburgh,Medium,2024-08-03,2024-08-04,,52.4862,-1.8904,55.9533,-3.1883
+SHP003,UPS,Delayed,32.75,UPS345678,Bristol,Glasgow,High,2024-08-02,2024-08-03,,51.4545,-2.5879,55.8642,-4.2518
+SHP004,DPD,Delivered,18.90,DPD901234,Cardiff,Newcastle,Low,2024-08-01,2024-08-02,2024-08-02,51.4816,-3.1791,54.9783,-1.6178
+SHP005,Royal Mail,In Transit,12.25,RM567890,Liverpool,Leeds,Medium,2024-08-04,2024-08-05,,53.4084,-2.9916,53.8008,-1.5491
+SHP006,Amazon Logistics,Delivered,28.75,AMZN345678,Nottingham,Sheffield,High,2024-08-01,2024-08-03,2024-08-03,52.9548,-1.1581,53.3811,-1.4701
+SHP007,Hermes,Processing,35.60,HMS789012,Southampton,Portsmouth,Low,2024-08-05,2024-08-06,,50.9097,-1.4044,50.8050,-1.0872
+SHP008,TNT,Delayed,41.90,TNT234567,Oxford,Cambridge,Medium,2024-08-02,2024-08-04,,51.7520,-1.2577,52.2053,0.1218
+SHP009,UPS,Delivered,29.45,UPS987321,York,Hull,Low,2024-08-03,2024-08-04,2024-08-04,53.9600,-1.0873,53.7676,-0.3274
+SHP010,DPD,In Transit,33.80,DPD456789,Preston,Blackpool,Medium,2024-08-04,2024-08-05,,53.7632,-2.7031,53.8175,-3.0357"""
+    
+    st.download_button(
+        "📥 Download Enhanced Sample",
+        data=enhanced_data,
+        file_name="enhanced_logistics_manifest.csv",
+        mime="text/csv",
+        help="10 shipments • Tests Route Optimization",
+        key="enhanced_download"
+    )
+
+with col3:
+    st.markdown("**⚠️ Problem Manifest**")
+    st.markdown("*Tests: Compliance Alerts, Validation*")
+    st.caption("*7 columns • Contains compliance issues*")
+    
+    # Problem data using your basic structure but with compliance issues
+    problem_data = """Shipment ID,Carrier,Status,Cost,Tracking Ref,Origin,Destination
+SHP020,UnauthorizedCarrier,Delayed,125.50,,London,Paris
+SHP021,SketchyLogistics,Failed,85.20,FAKE001,Manchester,Dublin
+SHP022,FakeTransport,In Transit,99.99,INVALID123,Liverpool,Cork
+SHP023,,Processing,0.00,,Birmingham,Belfast
+SHP024,UnknownCarrier,Cancelled,75.00,NO_TRACK,Bristol,Cardiff
+SHP025,DHL,Delivered,22.75,DHL987654,Leeds,York
+SHP026,BadCarrier,Delayed,156.90,,Newcastle,Glasgow
+SHP027,UPS,In Transit,45.60,UPS123789,Southampton,Brighton
+SHP028,,Failed,0.00,MISSING_REF,Plymouth,Exeter
+SHP029,IllegalTransport,Processing,89.45,,Swansea,Newport"""
+    
+    st.download_button(
+        "📥 Download Problem Sample",
+        data=problem_data,
+        file_name="problem_logistics_manifest.csv",
+        mime="text/csv",
+        help="10 shipments • Tests Compliance Checking",
+        key="problem_download"
+    )
+
+# Quick instructions
+st.markdown("### 🚀 **Quick Test Instructions**")
+with st.expander("👁️ Click to see testing guide", expanded=False):
+    st.markdown("""
+    **Step 1:** Click any download button above  
+    **Step 2:** Upload the downloaded CSV file using the sidebar file uploader  
+    **Step 3:** Explore these features:
+    
+    **📊 Dashboard Tab:**
+    - View automatic KPI calculations
+    - See carrier distribution charts
+    - Cost analysis and trends
+    
+    **🤖 AI Insights Tab:**  
+    - Ask: *"How many shipments are delayed?"*
+    - Ask: *"Which carrier has the most shipments?"*
+    - Ask: *"What's the total cost?"*
+    
+    **📋 Data Mapping Tab:**
+    - Generate coordinates for basic manifest
+    - Download enhanced data with lat/lon
+    
+    **✅ Carrier Check Tab:**
+    - See approved vs unapproved carriers
+    - Test with problem manifest for alerts
+    
+    **🚚 Route Optimization Tab:**
+    - Upload enhanced manifest with coordinates
+    - View interactive maps and routes
+    
+    **📥 Reports Tab:**
+    - Export to Excel with AI summaries
+    - Generate PDF reports
+    
+    **💡 Pro Tips:**
+    - Try **Basic Sample** first for core AI features
+    - Use **Enhanced Sample** for mapping features  
+    - Try **Problem Sample** to see compliance alerts in action
+    """)
+
+st.markdown("---")
 
 # ------------------------------------------------------------------------------
 # 6. Tab Navigation and Content Display
@@ -646,6 +782,18 @@ with tab4:
         st.info("ℹ️ Please upload a manifest file to check for carrier compliance.")
 
 with tab5:
+    st.header("🚚 Route Optimization")
+    
+    # Add prominent notice for enhanced data requirement
+    st.info("""
+    📍 **Enhanced Data Required:** This tab requires manifest data with geographic coordinates.
+    
+    **To use Route Optimization:**
+    1. Download the **🌍 Enhanced Sample** from above, OR
+    2. Upload basic data → Go to **📋 Data Mapping** → Generate coordinates → Download enhanced file → Re-upload
+    
+    **What you'll get:** Interactive maps, route analysis, distance calculations, and delivery optimization insights.
+    """)
     show_route_optimization_tab(st.session_state.get('df', df))
 
 with tab6:

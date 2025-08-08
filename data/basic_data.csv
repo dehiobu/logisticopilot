@@ -1,0 +1,14 @@
+Shipment ID,Carrier,Status,Cost,Tracking Ref,Origin,Destination
+SHP001,DPD,Delivered,12.5,TR001,London,Paris
+SHP002,FedEx,In Transit,48,TR002,Birmingham,Berlin
+SHP003,DHL,Delayed,15.75,TR003,Manchester,Madrid
+SHP004,XYZ Express,Cancelled,99.99,,Leeds,Rome
+SHP005,DPD,Delivered,13,TR005,Bristol,"Hook, UK"
+SHP006,UPS,Delayed,20,TR006,Liverpool ,Scotland
+SHP007,DPD,Delivered,36.54733333,TR007,London,Paris
+SHP008,FedEx,In Transit,37.02561905,TR008,Birmingham,Berlin
+SHP009,DHL,Delayed,37.50390476,TR009,Manchester,Madrid
+SHP010,XYZ Express,Cancelled,37.98219048,TR010,Leeds,Rome
+SHP011,DPD,Delivered,38.46047619,TR011,Bristol,"Hook, UK"
+SHP012,DPD,Delayed,38.9387619,TR012,Liverpool ,Scotland
+SHP013,DPD,Delayed,39.9387619,TR013,Liverpool ,Scotland

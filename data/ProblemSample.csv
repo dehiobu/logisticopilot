@@ -1,0 +1,11 @@
+Shipment ID,Carier,Status,Cost,Tracking Ref,Origin,Destination
+SHP020,UnauthorizedCarrier,Delayed,125.5,,London,Paris
+SHP021,SketchyLogistics,Failed,85.2,FAKE001,Manchester,Dublin
+SHP022,FakeTransport,In Transit,99.99,INVALID123,Liverpool,Cork
+SHP023,,Processing,0,,Birmingham,Belfast
+SHP024,UnknownCarrier,Cancelled,75,NO_TRACK,Bristol,Cardiff
+SHP025,DHL,Delivered,22.75,DHL987654,Leeds,York
+SHP026,BadCarrier,Delayed,156.9,,Newcastle,Glasgow
+SHP027,UPS,In Transit,45.6,UPS123789,Southampton,Brighton
+SHP028,,Failed,0,MISSING_REF,Plymouth,Exeter
+SHP029,IllegalTransport,Processing,89.45,,Swansea,Newport"""
