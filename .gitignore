@@ -1,0 +1,29 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs and output
+*.log
+*.out
+
+# Excel reports
+*.xlsx
+
+# Environment and IDE
+.env
+.venv/
+venv/
+.idea/
+.vscode/
+set_env_vars
+
+# Streamlit specific
+.streamlit/secrets.toml
+set_env_vars.bat
+.env
+set_env_vars.bat
+.env
+venv/
+__pycache__/
+*.pyc

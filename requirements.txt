@@ -1,0 +1,64 @@
+# ==============================================================================
+# 📦 LogiBot AI Copilot - Dependencies
+# ==============================================================================
+
+# Web application framework
+streamlit>=1.28.0
+
+# Data manipulation and analysis
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Excel file handling for report generation
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+
+# Core library for LLM orchestration
+langchain>=0.1.0
+langchain-openai>=0.0.8
+langchain-community>=0.0.20
+
+# Vector database for document retrieval
+faiss-cpu>=1.7.4
+
+# Text processing and document handling
+tiktoken>=0.5.0
+
+# Data validation and parsing
+pydantic>=2.0.0
+
+# PDF report generation
+reportlab>=4.0.0
+fpdf2>=2.7.0
+
+# Interactive mapping
+folium>=0.14.0
+streamlit-folium>=0.13.0
+
+# Data visualization
+plotly>=5.17.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Template engine
+jinja2>=3.1.0
+
+# HTTP requests (for API calls)
+requests>=2.31.0
+
+# Date and time handling
+python-dateutil>=2.8.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Email functionality
+smtplib2>=0.2.1
+
+# Logging and utilities
+loguru>=0.7.0
+
+# Development and testing (optional)
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
